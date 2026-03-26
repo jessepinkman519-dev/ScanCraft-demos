@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScanCraft Auto Input Template</title>
+    <style>
+      :root {
+        --bg: #0b0f12;
+        --panel: rgba(255,255,255,0.06);
+        --border: rgba(255,255,255,0.12);
+        --text: #ffffff;
+        --muted: rgba(255,255,255,0.72);
+        --accent: #8cf0c1;
+        --accent-soft: rgba(140,240,193,0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Inter, Arial, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(0,180,140,.18), transparent 28%),
+          radial-gradient(circle at top right, rgba(0,110,180,.16), transparent 25%),
+          var(--bg);
+        color: var(--text);
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .section, .hero {
+        padding: 42px 0;
+      }
+
+      .hero {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .grid, .grid-2, .grid-3, .hero-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        padding: 22px;
+        backdrop-filter: blur(3px);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .14em;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .2em;
+        color: var(--accent);
+        margin: 0 0 10px;
+      }
+
+      h1, h2, h3, p {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 7vw, 4.8rem);
+        line-height: 1.02;
+        letter-spacing: -.04em;
+        max-width: 12ch;
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        line-height: 1.08;
+        letter-spacing: -.03em;
+      }
+
+      .muted {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .button-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      button {
+        border: none;
+        border-radius: 18px;
+        padding: 14px 18px;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .primary {
+        background: white;
+        color: #0b0f12;
+        font-weight: 700;
+      }
+
+      .ghost {
+        background: var(--panel);
+        color: white;
+        border: 1px solid var(--border);
+      }
+
+      .video-box, .qr-box, .demo-video {
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        background: rgba(0,0,0,.24);
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .qr-image {
+        width: 140px;
+        height: 140px;
+        border-radius: 16px;
+        background: white;
+        padding: 8px;
+        display: block;
+        margin: 0 auto 10px;
+      }
+
+      .badge-wrap {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,.045);
+        color: rgba(255,255,255,.82);
+      }
+
+      .product-top, .info-row, .split {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .price-tag, .location-pill {
+        padding: 10px 12px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        background: rgba(0,0,0,.22);
+      }
+
+      .section-alt {
+        background: rgba(255,255,255,.025);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .highlight {
+        background: var(--accent-soft);
+        border-color: rgba(140,240,193,.24);
+      }
+
+      .link-box {
+        margin-top: 14px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,.04);
+        word-break: break-word;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .small-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .14em;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      label {
+        font-size: 13px;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      input, textarea {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,.05);
+        color: white;
+        padding: 12px 14px;
+        font: inherit;
+      }
+
+      textarea {
+        min-height: 90px;
+        resize: vertical;
+      }
+
+      @media (min-width: 860px) {
+        .hero-grid {
+          grid-template-columns: 1.05fr .95fr;
+          align-items: start;
+        }
+
+        .grid-2 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .form-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .product-top, .info-row, .split {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section" id="inputSection">
+      <div class="wrap">
+        <div class="card">
+          <p class="eyebrow">ScanCraft Auto Input</p>
+          <h2>Fill once. Apply. Deploy.</h2>
+
+          <div class="button-row">
+            <button type="button" class="primary" onclick="applyInputs()">Apply Changes</button>
+            <button type="button" class="ghost" onclick="toggleInputs()" id="toggleBtn">Hide Inputs</button>
+            <button type="button" class="ghost" onclick="openProductById('main-product')">Preview Product Page</button>
+          </div>
+
+          <div class="form-grid" style="margin-top:20px;">
+            <div>
+              <label>Business Name</label>
+              <input id="inputBrandName" value="Farm & Sea" />
+            </div>
+            <div>
+              <label>Hero Eyebrow</label>
+              <input id="inputHeroEyebrow" value="Farm & Sea • Bandon Digital Package" />
+            </div>
+            <div>
+              <label>Hero Headline</label>
+              <input id="inputHeroHeadline" value="A physical-to-digital market experience for Farm & Sea." />
+            </div>
+            <div>
+              <label>Address</label>
+              <input id="inputAddress" value="250 1st St SW, Bandon, OR 97411" />
+            </div>
+            <div>
+              <label>Phone</label>
+              <input id="inputPhone" value="(541) 347-3474" />
+            </div>
+            <div>
+              <label>Hours</label>
+              <input id="inputHours" value="Open daily 10:00 AM – 6:00 PM" />
+            </div>
+            <div style="grid-column: 1 / -1;">
+              <label>Hero Text</label>
+              <textarea id="inputHeroText">A presentation-ready concept connecting shelves, featured products, chef storytelling, QR codes, mobile pages, and future business integrations into one clean customer experience.</textarea>
+            </div>
+            <div style="grid-column: 1 / -1;">
+              <label>Business Context</label>
+              <textarea id="inputContext">Located in The Warehouse building in Old Town Bandon, near the seasonal Bandon Farmers & Artisan Market and next to Warehouse Coffee Cafe.</textarea>
+            </div>
+            <div>
+              <label>Product Name</label>
+              <input id="inputProductName" value="Cultured Sea Salt Butter" />
+            </div>
+            <div>
+              <label>Price</label>
+              <input id="inputPrice" value="$9.00" />
+            </div>
+            <div>
+              <label>Category</label>
+              <input id="inputCategory" value="House Special" />
+            </div>
+            <div>
+              <label>Video Label</label>
+              <input id="inputVideo" value="Chef Butter Story" />
+            </div>
+            <div>
+              <label>Scan Label</label>
+              <input id="inputScan" value="Scan to watch it being made" />
+            </div>
+            <div>
+              <label>Location Label</label>
+              <input id="inputLocationLabel" value="Old Town Bandon" />
+            </div>
+            <div style="grid-column: 1 / -1;">
+              <label>Description</label>
+              <textarea id="inputDescription">Small-batch whipped butter spread finished with flaky sea salt and local herbs.</textarea>
+            </div>
+            <div style="grid-column: 1 / -1;">
+              <label>Story / Chef Note</label>
+              <textarea id="inputChefNote">This product is designed to turn a simple table item into part of the experience. The texture, finishing salt, and herb blend make it feel premium the moment it hits fresh bread or seafood.</textarea>
+            </div>
+            <div style="grid-column: 1 / -1;">
+              <label>Pairing</label>
+              <textarea id="inputPairing">Excellent with warm bread, baked potatoes, grilled fish, or a seafood tasting board.</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="homeView">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="pill"><span class="dot"></span>Live Owner Demo Preview</div>
+            <p class="eyebrow" id="heroBrandEyebrow" style="margin-top:18px;"></p>
+            <h1 id="heroHeadline"></h1>
+            <p class="muted" id="heroText"></p>
+
+            <div class="button-row">
+              <button type="button" class="primary" onclick="openProductById('main-product')">Launch Product Experience</button>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="card">
+              <p class="muted">Featured Product Demo</p>
+              <h3 id="featuredProductName"></h3>
+              <div class="grid-2">
+                <div class="video-box" id="featuredVideoLabel"></div>
+                <div class="qr-box">
+                  <div>
+                    <img id="heroQr" class="qr-image" alt="QR code for featured product" />
+                    <p class="muted">Scan opens the live product story</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-3">
+              <div class="card">
+                <p class="muted">Use Case</p>
+                <h3>In-store QR product storytelling</h3>
+              </div>
+              <div class="card">
+                <p class="muted">Launch Style</p>
+                <h3>Small pilot → expand</h3>
+              </div>
+              <div class="card">
+                <p class="muted">Best Fit</p>
+                <h3 id="locationPillHome"></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow">Business Snapshot</p>
+          <h2 id="snapshotHeadline"></h2>
+          <p class="muted" id="snapshotText"></p>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>Business Details</h3>
+              <p class="muted"><strong>Address:</strong> <span id="bizAddress"></span></p>
+              <p class="muted"><strong>Phone:</strong> <span id="bizPhone"></span></p>
+              <p class="muted"><strong>Hours:</strong> <span id="bizHours"></span></p>
+              <p class="muted"><strong>Context:</strong> <span id="bizContext"></span></p>
+            </div>
+
+            <div class="card">
+              <h3>Core Offerings</h3>
+              <div class="badge-wrap" id="offeringsWrap"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="wrap">
+          <p class="eyebrow">Flagship Experience</p>
+          <h2>QR-powered product storytelling</h2>
+          <p class="muted">Each physical display can connect to a short-form product experience designed to increase trust, value, and purchase intent.</p>
+
+          <div class="grid-3" id="productCards"></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="productView" class="hidden">
+      <section class="section">
+        <div class="wrap" style="max-width:760px;">
+          <button type="button" class="ghost" onclick="goHome()">← Back to Market Demo</button>
+
+          <div class="card" style="margin-top:18px; border-color: rgba(140,240,193,.24); background: linear-gradient(135deg, rgba(0,180,140,.12), rgba(0,110,180,.10)), var(--panel);">
+            <p class="eyebrow" id="productPageEyebrow"></p>
+            <h2 id="productName"></h2>
+            <p class="muted">Scan-to-story product page designed for in-store presentation.</p>
+          </div>
+
+          <div class="video-box" style="min-height:260px; margin-top:18px;" id="productVideoBox"></div>
+
+          <div class="grid" style="margin-top:18px;">
+            <div class="card">
+              <h3>About this product</h3>
+              <p class="muted" id="productDescription"></p>
+            </div>
+
+            <div class="card">
+              <h3>Story / Chef Note</h3>
+              <p class="muted" id="productChefNote"></p>
+            </div>
+
+            <div class="card">
+              <h3>Pairing Suggestion</h3>
+              <p class="muted" id="productPairing"></p>
+            </div>
+
+            <div class="card highlight">
+              <div class="split">
+                <div>
+                  <p class="muted">Available in-store</p>
+                  <h2 id="productPrice" style="margin-bottom:0;"></h2>
+                </div>
+                <div class="location-pill" id="locationPill"></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="small-label">Live Product Link</div>
+              <div id="productLink" class="link-box"></div>
+            </div>
+
+            <div class="card">
+              <div class="small-label">Scannable QR</div>
+              <img id="productQrImage" class="qr-image" alt="Scannable QR code" />
+              <p class="muted">Use this QR on shelf tags, menus, packaging, or display cards.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      let siteConfig = {
+        brandName: "Farm & Sea",
+        heroBrandEyebrow: "Farm & Sea • Bandon Digital Package",
+        heroHeadline: "A physical-to-digital market experience for Farm & Sea.",
+        heroText: "A presentation-ready concept connecting shelves, featured products, chef storytelling, QR codes, mobile pages, and future business integrations into one clean customer experience.",
+        address: "250 1st St SW, Bandon, OR 97411",
+        phone: "(541) 347-3474",
+        hours: "Open daily 10:00 AM – 6:00 PM",
+        context: "Located in The Warehouse building in Old Town Bandon, near the seasonal Bandon Farmers & Artisan Market and next to Warehouse Coffee Cafe.",
+        locationLabel: "Old Town Bandon",
+        offerings: ["Fresh seafood", "Gourmet meats & deli", "Bakery & pantry"]
+      };
+
+      let products = [
+        {
+          id: "main-product",
+          category: "House Special",
+          name: "Cultured Sea Salt Butter",
+          price: "$9.00",
+          description: "Small-batch whipped butter spread finished with flaky sea salt and local herbs.",
+          chefNote: "This product is designed to turn a simple table item into part of the experience. The texture, finishing salt, and herb blend make it feel premium the moment it hits fresh bread or seafood.",
+          pairing: "Excellent with warm bread, baked potatoes, grilled fish, or a seafood tasting board.",
+          video: "Chef Butter Story",
+          scan: "Scan to watch it being made"
+        }
+      ];
+
+      let currentProduct = products[0];
+      let inputsVisible = true;
+
+      function getBaseUrl() {
+        return window.location.origin + window.location.pathname;
+      }
+
+      function getProductUrl(productId) {
+        return getBaseUrl() + "#product=" + encodeURIComponent(productId);
+      }
+
+      function getQrUrl(targetUrl) {
+        return "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(targetUrl);
+      }
+
+      function setText(id, value) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value || "";
+      }
+
+      function applyInputs() {
+        siteConfig.brandName = document.getElementById("inputBrandName").value.trim();
+        siteConfig.heroBrandEyebrow = document.getElementById("inputHeroEyebrow").value.trim();
+        siteConfig.heroHeadline = document.getElementById("inputHeroHeadline").value.trim();
+        siteConfig.heroText = document.getElementById("inputHeroText").value.trim();
+        siteConfig.address = document.getElementById("inputAddress").value.trim();
+        siteConfig.phone = document.getElementById("inputPhone").value.trim();
+        siteConfig.hours = document.getElementById("inputHours").value.trim();
+        siteConfig.context = document.getElementById("inputContext").value.trim();
+        siteConfig.locationLabel = document.getElementById("inputLocationLabel").value.trim();
+        siteConfig.offerings = ["Featured product", "QR experience", "Customer engagement"];
+
+        products[0] = {
+          id: "main-product",
+          category: document.getElementById("inputCategory").value.trim(),
+          name: document.getElementById("inputProductName").value.trim(),
+          price: document.getElementById("inputPrice").value.trim(),
+          description: document.getElementById("inputDescription").value.trim(),
+          chefNote: document.getElementById("inputChefNote").value.trim(),
+          pairing: document.getElementById("inputPairing").value.trim(),
+          video: document.getElementById("inputVideo").value.trim(),
+          scan: document.getElementById("inputScan").value.trim()
+        };
+
+        currentProduct = products[0];
+        renderSiteInfo();
+        renderCards();
+        updateProductView(products[0]);
+      }
+
+      function toggleInputs() {
+        const inputSection = document.getElementById("inputSection");
+        const toggleBtn = document.getElementById("toggleBtn");
+
+        inputsVisible = !inputsVisible;
+
+        if (inputsVisible) {
+          inputSection.classList.remove("hidden");
+          toggleBtn.textContent = "Hide Inputs";
+        } else {
+          inputSection.classList.add("hidden");
+          toggleBtn.textContent = "Show Inputs";
+        }
+      }
+
+      function renderSiteInfo() {
+        setText("heroBrandEyebrow", siteConfig.heroBrandEyebrow);
+        setText("heroHeadline", siteConfig.heroHeadline);
+        setText("heroText", siteConfig.heroText);
+        setText("snapshotHeadline", "Built around the real " + siteConfig.brandName + " footprint");
+        setText("snapshotText", siteConfig.brandName + " is positioned as a premium customer experience with scannable product storytelling.");
+        setText("bizAddress", siteConfig.address);
+        setText("bizPhone", siteConfig.phone);
+        setText("bizHours", siteConfig.hours);
+        setText("bizContext", siteConfig.context);
+        setText("locationPill", siteConfig.locationLabel);
+        setText("locationPillHome", siteConfig.locationLabel);
+        setText("featuredProductName", products[0].name);
+        setText("featuredVideoLabel", products[0].video);
+
+        const offeringsWrap = document.getElementById("offeringsWrap");
+        offeringsWrap.innerHTML = "";
+        siteConfig.offerings.forEach((item) => {
+          const span = document.createElement("span");
+          span.className = "badge";
+          span.textContent = item;
+          offeringsWrap.appendChild(span);
+        });
+
+        document.getElementById("heroQr").src = getQrUrl(getProductUrl(products[0].id));
+      }
+
+      function renderCards() {
+        const container = document.getElementById("productCards");
+        container.innerHTML = "";
+
+        const product = products[0];
+        const productUrl = getProductUrl(product.id);
+        const qrUrl = getQrUrl(productUrl);
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="product-top">
+            <div>
+              <p class="eyebrow">${product.category}</p>
+              <h3>${product.name}</h3>
+            </div>
+            <div class="price-tag">${product.price}</div>
+          </div>
+          <div class="demo-video">${product.video}</div>
+          <p class="muted">${product.description}</p>
+          <div class="info-row">
+            <div>
+              <p><strong>${product.scan}</strong></p>
+            </div>
+            <div style="text-align:center;">
+              <img class="qr-image" src="${qrUrl}" alt="QR for ${product.name}">
+            </div>
+          </div>
+          <div class="button-row">
+            <button type="button" class="primary" onclick="openProductById('${product.id}')">Open QR Demo</button>
+          </div>
+        `;
+        container.appendChild(card);
+      }
+
+      function updateProductView(product) {
+        currentProduct = product;
+        const productUrl = getProductUrl(product.id);
+
+        setText("productPageEyebrow", siteConfig.brandName + " • QR Product Experience");
+        setText("productName", product.name);
+        setText("productDescription", product.description);
+        setText("productChefNote", product.chefNote);
+        setText("productPairing", product.pairing);
+        setText("productPrice", product.price);
+        setText("productLink", productUrl);
+        setText("productVideoBox", product.video);
+        setText("locationPill", siteConfig.locationLabel);
+
+        document.getElementById("productQrImage").src = getQrUrl(productUrl);
+      }
+
+      function openProductById(productId) {
+        const product = products.find((p) => p.id === productId) || products[0];
+        updateProductView(product);
+        document.getElementById("homeView").classList.add("hidden");
+        document.getElementById("productView").classList.remove("hidden");
+        window.location.hash = "product=" + encodeURIComponent(product.id);
+        window.scrollTo(0, 0);
+      }
+
+      function goHome() {
+        document.getElementById("productView").classList.add("hidden");
+        document.getElementById("homeView").classList.remove("hidden");
+        history.replaceState(null, "", getBaseUrl());
+        window.scrollTo(0, 0);
+      }
+
+      function handleDeepLink() {
+        const hash = window.location.hash || "";
+        if (hash.startsWith("#product=")) {
+          openProductById("main-product");
+        } else {
+          document.getElementById("productView").classList.add("hidden");
+          document.getElementById("homeView").classList.remove("hidden");
+        }
+      }
+
+      renderSiteInfo();
+      renderCards();
+      updateProductView(products[0]);
+      handleDeepLink();
+      window.addEventListener("hashchange", handleDeepLink);
+    </script>
+  </body>
+</html>
